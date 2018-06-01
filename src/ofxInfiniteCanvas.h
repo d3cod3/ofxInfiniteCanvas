@@ -12,6 +12,8 @@
 #pragma once
 #include "ofMain.h"
 
+#define MIN_ZOOM    0.05
+#define MAX_ZOOM    4
 
 class ofxInfiniteCanvas {
 public:
@@ -34,6 +36,13 @@ public:
     void enableMouseInput(bool e = true);
     void disableMouseInput();
     bool getMouseInputEnabled();
+    void setbMouseInputEnabled(bool b) { bMouseInputEnabled = b;}
+    glm::vec2 getClickPoint() { return glm::vec2(clicPoint.x,clicPoint.y); }
+    glm::vec2 getMovingPoint() {
+        glm::vec2 pos = glm::vec2(ofGetMouseX(), ofGetMouseY()) - translation.get()- viewport.getPosition();
+        pos /= scale;
+        return pos;
+    }
     
     void mousePressed(ofMouseEventArgs & mouse);
     void mouseReleased(ofMouseEventArgs & mouse);

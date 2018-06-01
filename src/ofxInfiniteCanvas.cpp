@@ -116,10 +116,10 @@ void ofxInfiniteCanvas::reset(){
         translation = viewport.getCenter();
         //        translation = {viewport.width/2, viewport.height/2, 0.};
     }else{
-        translation = {(ofGetWidth()/2.), (ofGetHeight()/2.), 0};
+        translation = {ofGetWidth()/6.,0, 0};
     }
     offset = {0,0,0};
-    scale =1;
+    scale = 1;
     move = {0,0,0};
     bDoScale = false;
     bApplyInertia = false;
@@ -139,6 +139,7 @@ void ofxInfiniteCanvas::begin(ofRectangle _viewport){
         
         ofTranslate(t);
         ofScale(scale,scale * (bFlipY?-1:1),scale);
+
     }else{
 //        cam.setOrientation(orientation);
         cam.setPosition(t.x * -1.0f, t.y * (bFlipY?-1:1), t.z * -1);
@@ -308,14 +309,14 @@ void ofxInfiniteCanvas::mouseReleased(ofMouseEventArgs & mouse){
     if(viewport.inside(mouse.x, mouse.y)){
         if (bMouseInputEnabled) {
             unsigned long curTap = ofGetElapsedTimeMillis();
-            if(lastTap != 0 && curTap - lastTap < doubleclickTime){
+            /*if(lastTap != 0 && curTap - lastTap < doubleclickTime){
                 reset();
                 return;
-            }
+            }*/
             lastTap = curTap;
             bApplyInertia = true;
             mouseVel = mouse  - prevMouse;
-            updateMouse();
+            //updateMouse();
             prevMouse = mouse;
         }
         if (bMouseOverride) {
@@ -398,6 +399,13 @@ void ofxInfiniteCanvas::update(){
             translation += glm::vec3(move.x , move.y, 0);
         }else if(bDoScale){
             scale += move.z + move.z*scale;
+            if(scale > MAX_ZOOM){
+                scale = MAX_ZOOM;
+            }
+            if(scale < MIN_ZOOM){
+                scale = MIN_ZOOM;
+            }
+
             translation = clicTranslation - clicPoint*(scale - clicScale);
         }
         if(!bApplyInertia){
