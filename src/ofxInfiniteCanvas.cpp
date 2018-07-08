@@ -355,7 +355,7 @@ void ofxInfiniteCanvas::mouseScrolled(ofMouseEventArgs & mouse){
             move.z = scrollSensitivity * mouse.scrollY / ofGetHeight();
             bDoTranslate = false;
             bDoScale = true;
-            clicPoint = glm::vec2(ofGetMouseX(), ofGetMouseY()) - translation.get()- viewport.getPosition();
+            clicPoint = glm::vec2(ofGetMouseX(), ofGetMouseY()) - translation.get() - viewport.getPosition();
             clicPoint /= scale;
             
             clicScale = scale;
