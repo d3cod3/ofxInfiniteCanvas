@@ -177,7 +177,7 @@ void ofxInfiniteCanvas::setScrollSensitivity(float s){
 }
 //----------------------------------------
 void ofxInfiniteCanvas::setLookAt(LookAt l){
-    bool bUpdateMatrix = false;
+    //bool bUpdateMatrix = false;
     lookAt = l;
     switch (l) {
         case OFX2DCAM_FRONT:
