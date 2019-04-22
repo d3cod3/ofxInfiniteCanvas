@@ -270,6 +270,15 @@ void ofxInfiniteCanvas::enableMouseListeners(bool e){
         bMouseListenersEnabled = e;
     }
 }
+
+//----------------------------------------
+void ofxInfiniteCanvas::disableMouseListeners(){
+    ofRemoveListener(ofEvents().mouseDragged, this, &ofxInfiniteCanvas::mouseDragged, bMouseOverride?OF_EVENT_ORDER_BEFORE_APP:OF_EVENT_ORDER_AFTER_APP);
+    ofRemoveListener(ofEvents().mousePressed, this, &ofxInfiniteCanvas::mousePressed, bMouseOverride?OF_EVENT_ORDER_BEFORE_APP:OF_EVENT_ORDER_AFTER_APP);
+    ofRemoveListener(ofEvents().mouseReleased, this, &ofxInfiniteCanvas::mouseReleased, bMouseOverride?OF_EVENT_ORDER_BEFORE_APP:OF_EVENT_ORDER_AFTER_APP);
+    ofRemoveListener(ofEvents().mouseScrolled, this, &ofxInfiniteCanvas::mouseScrolled, bMouseOverride?OF_EVENT_ORDER_BEFORE_APP:OF_EVENT_ORDER_AFTER_APP);
+}
+
 //----------------------------------------
 void ofxInfiniteCanvas::disableMouseInput(){
     enableMouseInput(false);

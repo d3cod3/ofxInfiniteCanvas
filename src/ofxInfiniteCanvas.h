@@ -43,6 +43,8 @@ public:
         pos /= scale;
         return pos;
     }
+
+    void disableMouseListeners();
     
     void mousePressed(ofMouseEventArgs & mouse);
     void mouseReleased(ofMouseEventArgs & mouse);
@@ -124,8 +126,8 @@ protected:
     bool bMouseOverride;
     ofMouseEventArgs lastMouseDragged, lastMousePressed, lastMouseReleased, lastMouseScrolled;
     bool bNotifyMouseDragged, bNotifyMousePressed, bNotifyMouseReleased, bNotifyMouseScrolled;
-    
-    
+
+
     void enableMouseListeners(bool e = true);
     bool bMouseListenersEnabled;
     glm::vec2 prevMouse, clicPoint;
