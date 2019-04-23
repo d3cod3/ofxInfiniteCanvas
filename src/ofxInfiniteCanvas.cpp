@@ -240,12 +240,12 @@ void ofxInfiniteCanvas::enableMouseInputCB(bool &e){
 void ofxInfiniteCanvas::enableMouseInput(bool e){
     if(bMouseInputEnabled != e ){
         if(e){
-            ofAddListener(ofEvents().update, this, &ofxInfiniteCanvas::update, bMouseOverride?OF_EVENT_ORDER_BEFORE_APP:OF_EVENT_ORDER_AFTER_APP);
+            //ofAddListener(ofEvents().update, this, &ofxInfiniteCanvas::update, bMouseOverride?OF_EVENT_ORDER_BEFORE_APP:OF_EVENT_ORDER_AFTER_APP);
         }else{
-            ofRemoveListener(ofEvents().update, this, &ofxInfiniteCanvas::update, bMouseOverride?OF_EVENT_ORDER_BEFORE_APP:OF_EVENT_ORDER_AFTER_APP);
+            //ofRemoveListener(ofEvents().update, this, &ofxInfiniteCanvas::update, bMouseOverride?OF_EVENT_ORDER_BEFORE_APP:OF_EVENT_ORDER_AFTER_APP);
         }
         if (!bMouseOverride) {
-            enableMouseListeners(e);
+            //enableMouseListeners(e);
         }
         bMouseInputEnabled = e;
         if (bEnableMouse != e) {
