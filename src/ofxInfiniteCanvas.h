@@ -62,6 +62,8 @@ public:
 	void setTranslation(glm::vec3 t);
 	float getScale(){return scale;}
 	void setScale(float s);
+
+    void setUseScale(bool us) { bUseScale = us; }
     
     void setLookAt(LookAt l);
     LookAt getLookAt();
@@ -103,6 +105,7 @@ public:
 protected:
 
     bool bUseOfCam;
+    bool bUseScale;
     glm::vec3 orientation;
     void enableMouseInputCB(bool &e);
     ofRectangle viewport;

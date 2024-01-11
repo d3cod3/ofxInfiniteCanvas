@@ -52,6 +52,7 @@ ofxInfiniteCanvas::ofxInfiniteCanvas(){
     bMouseListenersEnabled = false;
     bDistanceSet = false;
     bDoScale = false;
+    bUseScale = true;
     
     reset();
     parameters.setName("ofxInfiniteCanvas");
@@ -294,7 +295,11 @@ void ofxInfiniteCanvas::mousePressed(ofMouseEventArgs & mouse){
         if (bMouseInputEnabled) {
             prevMouse = mouse;
             bDoTranslate =(mouse.button == OF_MOUSE_BUTTON_LEFT);
-            bDoScale =(mouse.button == OF_MOUSE_BUTTON_RIGHT);
+            if(bUseScale){
+                bDoScale =(mouse.button == OF_MOUSE_BUTTON_RIGHT);
+            }else{
+                bDoScale = false;
+            }
             bApplyInertia = false;
             clicPoint = mouse - translation.get() - viewport.getPosition();
             clicPoint /= scale;
@@ -363,7 +368,11 @@ void ofxInfiniteCanvas::mouseScrolled(ofMouseEventArgs & mouse){
         if (bMouseInputEnabled) {
             move.z = scrollSensitivity * mouse.scrollY / ofGetHeight();
             bDoTranslate = false;
-            bDoScale = true;
+            if(bUseScale){
+                bDoScale = true;
+            }else{
+                bDoScale = false;
+            }
             clicPoint = glm::vec2(ofGetMouseX(), ofGetMouseY()) - translation.get() - viewport.getPosition();
             clicPoint /= scale;
             
