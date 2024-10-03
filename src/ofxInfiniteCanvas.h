@@ -32,6 +32,7 @@ public:
     virtual void begin(ofRectangle viewport = ofGetCurrentViewport());
     virtual void end();
     void reset();
+    void resetTranslation();
     //-------   mouse
     void enableMouseInput(bool e = true);
     void disableMouseInput();
@@ -122,6 +123,7 @@ protected:
 	
 	ofParameterGroup protectedParameters;
 	ofParameter<glm::vec3>translation;
+    glm::vec3 initialTranslation;
     glm::vec3 clicTranslation, offset;
     ofParameter<bool> bEnableMouse,bFlipY;
     ofParameter<float> dragSensitivity, scrollSensitivity, drag, farClip, nearClip;

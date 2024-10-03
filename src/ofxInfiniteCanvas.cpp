@@ -36,7 +36,7 @@ ofMatrix4x4 ofxInfiniteCanvas::BoM = ofMatrix4x4( 1, 0, 0, 0,
 
 static const float minDifference = 0.1e-5f;
 
-static const unsigned long doubleclickTime = 300;
+//static const unsigned long doubleclickTime = 300;
 
 //----------------------------------------
 ofxInfiniteCanvas::ofxInfiniteCanvas(){
@@ -77,6 +77,8 @@ ofxInfiniteCanvas::ofxInfiniteCanvas(){
     protectedParameters.add(parameters);
     cam.enableOrtho();
     bUseOfCam = true;
+
+    initialTranslation = translation.get();
     
 }
 //----------------------------------------
@@ -126,6 +128,12 @@ void ofxInfiniteCanvas::reset(){
     bApplyInertia = false;
     bDoTranslate = false;
 }
+
+//----------------------------------------
+void ofxInfiniteCanvas::resetTranslation(){
+    translation = initialTranslation;
+}
+
 //----------------------------------------
 void ofxInfiniteCanvas::begin(ofRectangle _viewport){
     glm::vec3 t = glm::vec3(glm::vec4(translation.get() + offset,1.0) * orientationMatrix);
@@ -456,9 +464,10 @@ void ofxInfiniteCanvas::update(){
 //----------------------------------------
 void ofxInfiniteCanvas::drawDebug(){
     string m = "translation: " + ofToString(translation) + "\n";
+    m += "Inital translation: " + ofToString(initialTranslation) + "\n";
     m += "scale: " + ofToString(scale) + "\n";
     m += "clic point: " + ofToString(clicPoint) + "\n";
-    ofDrawBitmapString(m, 0, 20);
+    ofDrawBitmapString(m, 20, 100);
 }
 //----------------------------------------
 glm::vec3 ofxInfiniteCanvas::screenToWorld(glm::vec3 screen){
