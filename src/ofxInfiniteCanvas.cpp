@@ -132,6 +132,7 @@ void ofxInfiniteCanvas::reset(){
 //----------------------------------------
 void ofxInfiniteCanvas::resetTranslation(){
     translation = initialTranslation;
+    scale = 1;
 }
 
 //----------------------------------------
