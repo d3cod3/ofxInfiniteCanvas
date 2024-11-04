@@ -12,7 +12,7 @@
 #pragma once
 #include "ofMain.h"
 
-#define MIN_ZOOM    1
+#define MIN_ZOOM    0.4
 #define MAX_ZOOM    4
 
 class ofxInfiniteCanvas {
