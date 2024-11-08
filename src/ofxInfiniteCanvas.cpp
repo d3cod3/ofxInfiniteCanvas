@@ -479,6 +479,14 @@ glm::vec3 ofxInfiniteCanvas::screenToWorld(glm::vec3 screen){
     return s;
 }
 
+//----------------------------------------
+ofVec2f ofxInfiniteCanvas::screenToWorld2D(glm::vec3 screen){
+    ofVec2f res;
+    glm::vec3 s = screenToWorld(screen);
+    res.set(s.x,s.y);
+    return res;
+}
+
 glm::vec3 ofxInfiniteCanvas::worldToScreen(glm::vec3 world){
     glm::vec3 s = world * scale.get();
     s = glm::vec3(glm::vec4(s,1.) *  glm::inverse(orientationMatrix));

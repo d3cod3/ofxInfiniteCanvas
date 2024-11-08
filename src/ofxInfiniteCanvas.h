@@ -97,6 +97,7 @@ public:
 
     //-------   utils
     glm::vec3 screenToWorld(glm::vec3 screen);
+    ofVec2f screenToWorld2D(glm::vec3 screen);
 	glm::vec3 worldToScreen(glm::vec3 world);
 
 	void save(string path);
