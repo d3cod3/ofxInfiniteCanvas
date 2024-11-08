@@ -116,10 +116,10 @@ void ofxInfiniteCanvas::setOverrideMouse(bool b){
 //----------------------------------------
 void ofxInfiniteCanvas::reset(){
     if (!viewport.isEmpty()) {
-        translation = viewport.getCenter();
-        //        translation = {viewport.width/2, viewport.height/2, 0.};
+        //translation = viewport.getCenter();
+        translation = glm::vec3(0,0,0);
     }else{
-        translation = {ofGetWidth()/6.,0, 0};
+        translation = glm::vec3(0,0,0);
     }
     offset = {0,0,0};
     scale = 1;
