@@ -104,6 +104,9 @@ public:
 	bool load(string path);
     ofCamera cam;
     void toggleOfCam();
+
+    glm::vec3 initialTranslation;
+
 protected:
 
     bool bUseOfCam;
@@ -124,7 +127,7 @@ protected:
 	
 	ofParameterGroup protectedParameters;
 	ofParameter<glm::vec3>translation;
-    glm::vec3 initialTranslation;
+
     glm::vec3 clicTranslation, offset;
     ofParameter<bool> bEnableMouse,bFlipY;
     ofParameter<float> dragSensitivity, scrollSensitivity, drag, farClip, nearClip;

@@ -180,7 +180,8 @@ void ofxInfiniteCanvas::setNearClip(float nc){
 }
 //----------------------------------------
 void ofxInfiniteCanvas::setDragSensitivity(float s){
-    dragSensitivity = s;}
+    dragSensitivity = s;
+}
 //----------------------------------------
 void ofxInfiniteCanvas::setScrollSensitivity(float s){
     scrollSensitivity = s;
